@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>count down</title>
+    <style>
+      body {
+       background-image: url(" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlFMGfVKFGLHW8HgBhFLlKr7ol6uwbMz2a4Q&usqp=CAU");
+       background-repeat: no-repeat;
+       background-size: cover;
+     
+      }
+      .container {
+        background-size: inherit;
+        display: flex;
+        align-items: center;
+        background-size: cover;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: white;
+        margin: 90px auto;
+        height: 210px;
+        width: 450px;
+        justify-content: center;
+        text-align: center;
+      }
+      .btext {
+        position: relative;
+        top: 60px;
+        /* margin: 50px; */
+
+        width: 110px;
+        height: 50px;
+        font-size: 40px;
+        font-weight: normal;
+      }
+      span {
+        padding: 20px;
+        position: relative;
+        top: 40px;
+        font-size: 30px;
+        color: cadetblue;
+      }
+      h1 {
+        background-color: white;
+        position: absolute;
+        top: 90px;
+        width: 400px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>New Year Eve </h1>
+      <div class="days">
+        <p class="btext" id="days">0</p>
+        <span>days</span>
+      </div>
+      <div class="hour">
+        <p class="btext" id="hours">0</p>
+        <span>hour</span>
+      </div>
+      <div class="minutes">
+        <p class="btext" id="minutes">0</p>
+        <span>minutes</span>
+      </div>
+      <div class="second">
+        <p class="btext" id="seconds">0</p>
+        <span>second</span>
+      </div>
+    </div>
+    <script>
+      const day = document.getElementById("days")
+      const hour = document.getElementById("hours")
+      const mins = document.getElementById("minutes")
+      const sec = document.getElementById("seconds")
+
+      const newYear = "1 Jan 2023";
+      function countdown() {
+        const newYearDate = new Date(newYear);
+        const currentDate = new Date();
+
+        const totalSeconds = (newYearDate - currentDate) / 1000;
+        
+        const days= Math.floor(totalSeconds / 3600 / 24);
+        const hours = Math.floor(totalSeconds / 3600) % 24;
+        const minutes = Math.floor(totalSeconds / 60) % 60;
+        const seconds = Math.floor(totalSeconds) % 60;
+
+       day.innerHTML = formatTime(days);
+       hour.innerHTML = formatTime(hours);
+       mins.innerHTML = formatTime(minutes);
+       sec.innerHTML = formatTime(seconds);
+
+        // console.log(newYearDate - currentDate);
+
+        console.log(days, hours, seconds, seconds);
+      }
+      function formatTime(time){
+          return time< 10 ? (`0 ${time}`): time
+      }
+      //intial call
+      countdown();
+      setInterval(countdown, 1000);
+    </script>
+  </body>
+</html>
